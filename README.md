@@ -1,0 +1,2 @@
+# pastagke
+atividades em C
