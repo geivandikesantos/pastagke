@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <math.h>
+
+int fatorial(){
+	int fat, n;
+	printf("Insira um valor para o qual deseja calcular seu fatorial: ");
+	scanf("%d", &n);
+	for(fat = 1; n > 1; n--){
+		fat = fat * n;
+	}
+	return fat;
+}
+
+int primo(){
+	int num, i, resultado = 0;
+	printf("Digite um numero: ");
+	scanf("%d", &num);
+	for(i = 2; i <= num / 2; i++){
+		if(num % i == 0){
+			resultado++;
+			break;
+		}
+	}
+	return resultado;
+}
+
+float potencia(){
+	float a;
+	int b;
+	printf("Informe um numero real para ser a base: ");
+	scanf("%f", &a);
+	printf("Informe um numero inteiro para ser o expoente: ");
+	scanf("%d", &b);
+	float result = pow(a, b);
+	return result;
+}
+
+float raiz(){
+	float a;
+	printf("Informe um numero real: ");
+	scanf("%f", &a);
+	float result = sqrt(a);
+	return result;
+}
+
+void anoBissexto(){
+	int ano;
+	printf("Informe um ano: ");
+	scanf("%d", &ano);
+	if(ano % 4 == 0)
+		printf("O ano eh bissexto!\n");
+	else
+		printf("O ano nao eh bissexto!\n");
+}
+
+void mediaNotas(){
+	float n1, n2;
+	printf("Informe as duas notas do aluno, entre 0.0 e 10.0: ");
+	scanf("%f", &n1);
+	printf("Segunda nota: ");
+	scanf("%f", &n2);
+	if(n1 < 0.0 || n1 > 10.0 || n2 < 0.0 || n2 > 10.0){
+		printf("Uma ou as duas notas sao invalidas!\n");
+		return;
+	}
+	float med = (n1 + n2) / 2;
+	printf("Media: %.2f\n", med);
+}
+
+void mediaPonderada(){
+	float n1, n2, n3;
+	printf("Primeira nota: ");
+	scanf("%f", &n1);
+	printf("Segunda nota: ");
+	scanf("%f", &n2);
+	printf("Terceira nota: ");
+	scanf("%f", &n3);
+	float medp = (n1 + n2 + n3*2) / 4;
+	printf("Media: %.2f\n", medp);
+	if(medp >= 6.0)
+		printf("Aprovado!\n");
+	else
+		printf("Reprovado!\n");
+}
+
+int main(void){
+	
+	int opcao = -1;
+	int res, n;
+	float resu;
+	
+	while(opcao != 0){
+		printf("Digite um numero de 1 a 9: ");
+		scanf("%d", &opcao);
+		switch(opcao){
+			case 1:
+				res = fatorial();
+				printf("Fatorial calculado: %d\n", res);
+				break;
+			case 2:
+				res = primo();
+				if(res == 0)
+					printf("O numero eh primo\n");
+				else
+					printf("O numero nao eh primo\n");
+				break;
+			case 3:
+				do{
+					res = primo();
+					if(res == 0)
+						printf("O numero eh primo\n");
+					else
+						printf("O numero nao eh primo\n");
+					printf("Digite 0 para voltar ao menu principal\nOu qualquer outro valor para fazer outra verificacao: ");
+					scanf("%d", &n);
+				} while(n);
+				break;
+			case 4:
+				resu = potencia();
+				printf("Resultado: %e\n", resu);
+				break;
+			case 5:
+				resu = raiz();
+				printf("Raiz quadrada: %e\n", resu);
+				break;
+			case 6:
+				anoBissexto();
+				break;
+			case 7:
+				mediaNotas();
+				break;
+			case 8:
+				mediaPonderada();
+				break;
+			case 9:
+				printf("Eliwelton Moreira\n");
+				printf("%x\n", 1710019854);
+				break;
+			case 0:
+				break;
+			default:
+				printf("Opcao invalida!\n");
+		}
+	}
+	
+	printf("Volte sempre!\n");
+	
+}
